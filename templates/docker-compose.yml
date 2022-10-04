@@ -1,14 +1,14 @@
 version: "3.9"
 services:
   web:
-    image: docker.io/ulewa/postal2:latest
+    image: docker.io/ulewa/coller:latest
     command: postal web-server
     network_mode: host
     volumes:
       - /opt/postal/config:/config
 
   smtp:
-    image: docker.io/ulewa/postal2:latest
+    image: docker.io/ulewa/coller:latest
     command: postal smtp-server
     network_mode: host
     cap_add:
@@ -17,21 +17,21 @@ services:
       - /opt/postal/config:/config
 
   worker:
-    image: docker.io/ulewa/postal2:latest
+    image: docker.io/ulewa/coller:latest
     command: postal worker
     network_mode: host
     volumes:
       - /opt/postal/config:/config
 
   cron:
-    image: docker.io/ulewa/postal2:latest
+    image: docker.io/ulewa/coller:latest
     command: postal cron
     network_mode: host
     volumes:
       - /opt/postal/config:/config
 
   requeuer:
-    image: docker.io/ulewa/postal2:latest
+    image: docker.io/ulewa/coller:latest
     command: postal requeuer
     network_mode: host
     volumes:
@@ -39,7 +39,7 @@ services:
 
   runner:
     profiles: ["tools"]
-    image: docker.io/ulewa/postal2:latest
+    image: docker.io/ulewa/coller:latest
     command: postal
     network_mode: host
     volumes:
